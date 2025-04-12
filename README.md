@@ -12,7 +12,9 @@ Mobile app project with [Nasa API](https://api.nasa.gov/)
 - Jetpack Compose
 
 #### Screenshots
-
+<img alt="" src="https://github.com/kamikadze328/NasaDigest/blob/master/Screenshots/img.webp" width="350"> <img alt="" src="https://github.com/kamikadze328/NasaDigest/blob/master/Screenshots/img_1.webp" width="350">
+<img alt="" src="https://github.com/kamikadze328/NasaDigest/blob/master/Screenshots/img_2.webp" width="350"> <img alt="" src="https://github.com/kamikadze328/NasaDigest/blob/master/Screenshots/img_3.webp" width="350">
+<img alt="" src="https://github.com/kamikadze328/NasaDigest/blob/master/Screenshots/img_4.webp" width="350"> <img alt="" src="https://github.com/kamikadze328/NasaDigest/blob/master/Screenshots/img_5.webp" width="350">
 
 
 
