@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">Nasa Digest</string>
+    <string name="picture_of_the_day_title">Picture of the Day</string>
+    <string name="weather_title">Weather</string>
+    <string name="asteroids_title">Asteroids</string>
+    <string name="refresh">Refresh</string>
+    <string name="default_error_text">Sorry, something went wrong. Please try again later</string>
+    <string name="asteroid_diameter_km">Diameter: %s - %s km</string>
+    <string name="asteroid_absolute_magnitude">Absolute Magnitude: %s</string>
+    <string name="asteroid_potentially_hazardous">Hazardous</string>
+    <string name="asteroid_diameter_km_full">Asteroid diameter: min - %s km; max - %s km.</string>
+    <string name="asteroid_absolute_magnitude_full">Absolute Magnitude (M) is %s.</string>
+    <string name="asteroid_open_additional_info">Search addition info</string>
+    <string name="asteroid_id">ID: %s</string>
+    <string name="asteroid_potentially_hazardous_full">The asteroid is potentially hazardous.</string>
+    <string name="asteroid_first_observation_date">First observation date: %s</string>
+    <string name="asteroid_orbital_class_full">Orbital class is %s that means \"%s\".</string>
+    <string name="solar_flares_title">Solar Flare Data</string>
+    <string name="solar_flares_max_class">Class: %s</string>
+    <string name="solar_flares_in_day_amount">Amount: %s</string>
+    <string name="solar_flares_peak_time">Peak at %s</string>
+    <string name="geomagnetic_storms_title">Geomagnetic Storms Flare Data</string>
+    <string name="geomagnetic_storms_max_kp">Max Kp: %s</string>
+    <string name="geomagnetic_storms_in_day_amount">Amount: %s</string>
+</resources>

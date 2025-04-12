@@ -1,0 +1,72 @@
+[versions]
+agp = "8.9.1"
+kotlin = "2.1.20"
+ksp = "2.1.20-1.0.32"
+coreKtx = "1.16.0"
+lifecycleRuntimeKtx = "2.8.7"
+navigation = "2.8.9"
+activityCompose = "1.10.1"
+composeBom = "2025.04.00"
+kotlinxSerializationJson = "1.8.1"
+ktor = "3.1.2"
+coroutines = "1.10.1"
+hilt = "2.51.1"
+hiltNavigationCompose = "1.2.0"
+coil = "3.1.0"
+kotlinxCollectionsImmutable = "0.3.8"
+room = "2.7.0"
+datastore = "1.1.4"
+jodaTime = "2.13.1"
+
+[libraries]
+# AndoridX
+androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycleRuntimeKtx" }
+androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activityCompose" }
+androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "composeBom" }
+androidx-ui = { group = "androidx.compose.ui", name = "ui" }
+androidx-ui-material = { group = "androidx.compose.material", name = "material" }
+androidx-ui-graphics = { group = "androidx.compose.ui", name = "ui-graphics" }
+androidx-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
+androidx-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
+androidx-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
+androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
+androidx-navagation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "navigation" }
+androidx-datastore = { group = "androidx.datastore", name = "datastore-preferences", version.ref = "datastore" }
+kotlinx-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlinxSerializationJson" }
+kotlinx-collections-immutable = { group = "org.jetbrains.kotlinx", name = "kotlinx-collections-immutable-jvm", version.ref = "kotlinxCollectionsImmutable" }
+
+# Kotlin Coroutines
+kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "coroutines" }
+kotlinx-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "coroutines" }
+
+# Ktor
+ktor-client-core = { module = "io.ktor:ktor-client-core", version.ref = "ktor" }
+ktor-client-okhttp = { module = "io.ktor:ktor-client-okhttp", version.ref = "ktor" }
+ktor-client-content-negotiation = { module = "io.ktor:ktor-client-content-negotiation", version.ref = "ktor" }
+ktor-serialization-kotlinx-json = { module = "io.ktor:ktor-serialization-kotlinx-json", version.ref = "ktor" }
+
+# Dagger Hilt
+google-dagger-hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt" }
+google-dagger-hilt-compiler = { group = "com.google.dagger", name = "hilt-compiler", version.ref = "hilt" }
+androidx-hilt-navigation-compose = { group = "androidx.hilt", name = "hilt-navigation-compose", version.ref = "hiltNavigationCompose" }
+
+# Coil
+coil-compose = { group= "io.coil-kt.coil3", name = "coil-compose", version.ref = "coil" }
+coil-network-ktor = { group = "io.coil-kt.coil3", name = "coil-network-ktor3", version.ref = "coil" }
+
+# Room
+room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "room" }
+room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "room" }
+room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "room" }
+
+# 3-rd party
+android-joda-time = { group = "net.danlew", name = "android.joda", version.ref = "jodaTime" }
+
+[plugins]
+android-application = { id = "com.android.application", version.ref = "agp" }
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+goolge-dagger-hilt-android = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
+google-devtools-ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
