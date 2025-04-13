@@ -14,6 +14,7 @@ val client = HttpClient {
                 ignoreUnknownKeys = true
                 isLenient = true
                 prettyPrint = true
+                explicitNulls = false
             }
         )
     }

@@ -1,0 +1,78 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 3,
+    "identityHash": "7b6dbfb83c61fedef2f6827d8a7671f7",
+    "entities": [
+      {
+        "tableName": "geomagnetic_storms",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`max_kp_index` INTEGER, `kp_count` INTEGER NOT NULL, `date` TEXT NOT NULL, PRIMARY KEY(`date`))",
+        "fields": [
+          {
+            "fieldPath": "maxKpIndex",
+            "columnName": "max_kp_index",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "kpCount",
+            "columnName": "kp_count",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "date",
+            "columnName": "date",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "date"
+          ]
+        }
+      },
+      {
+        "tableName": "solar_flares",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`max_flare_class` TEXT NOT NULL, `flare_count` INTEGER NOT NULL, `peak_time_of_max_flare` TEXT NOT NULL, `date` TEXT NOT NULL, PRIMARY KEY(`date`))",
+        "fields": [
+          {
+            "fieldPath": "maxFlareClass",
+            "columnName": "max_flare_class",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "flareCount",
+            "columnName": "flare_count",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "peakTimeOfMaxFlare",
+            "columnName": "peak_time_of_max_flare",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "date",
+            "columnName": "date",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "date"
+          ]
+        }
+      }
+    ],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '7b6dbfb83c61fedef2f6827d8a7671f7')"
+    ]
+  }
+}

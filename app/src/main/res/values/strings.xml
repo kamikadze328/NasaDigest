@@ -5,6 +5,7 @@
     <string name="asteroids_title">Asteroids</string>
     <string name="refresh">Refresh</string>
     <string name="default_error_text">Sorry, something went wrong. Please try again later</string>
+    <string name="asteroid_hazardous_amount_zero">You are safe now</string>
     <string name="asteroid_diameter_km">Diameter: %s - %s km</string>
     <string name="asteroid_absolute_magnitude">Absolute Magnitude: %s</string>
     <string name="asteroid_potentially_hazardous">Hazardous</string>
@@ -20,6 +21,6 @@
     <string name="solar_flares_in_day_amount">Amount: %s</string>
     <string name="solar_flares_peak_time">Peak at %s</string>
     <string name="geomagnetic_storms_title">Geomagnetic Storms Flare Data</string>
-    <string name="geomagnetic_storms_max_kp">Max Kp: %s</string>
+    <string name="geomagnetic_storms_max_kp">Index: %s</string>
     <string name="geomagnetic_storms_in_day_amount">Amount: %s</string>
 </resources>

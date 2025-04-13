@@ -2,9 +2,9 @@ package com.kamikadze328.nasadigest.data.features.weather
 
 import com.kamikadze328.nasadigest.data.features.weather.model.DonkiGSTDto
 import com.kamikadze328.nasadigest.ui.common.DateParser
-import com.kamikadze328.nasadigest.ui.common.cut
 import com.kamikadze328.nasadigest.ui.features.weather.model.GeomagneticStormDaySummary
 import javax.inject.Inject
+import kotlin.math.roundToInt
 
 class GeomagneticStormsMapper @Inject constructor(
     private val dateParser: DateParser,
@@ -16,8 +16,8 @@ class GeomagneticStormsMapper @Inject constructor(
                     date = dateParser.parseToPrettyPrintShort(it.startTime)
                         ?: return@mapNotNull null,
                     maxKpIndex = it.allKpIndex
-                        ?.maxByOrNull { storm -> storm.kpIndex ?: -1.0 }?.kpIndex
-                        ?.cut(),
+                        ?.maxByOrNull { storm -> storm.kpIndex ?: 0.0 }?.kpIndex
+                        ?.roundToInt(),
                     kpCount = it.allKpIndex?.size ?: 0,
                 )
             }

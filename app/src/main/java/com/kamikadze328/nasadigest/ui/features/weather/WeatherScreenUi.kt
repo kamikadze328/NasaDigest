@@ -56,15 +56,13 @@ private fun WeatherScreenUiPreview() {
             solarFlareState = SolarFlareState.Data(
                 data = persistentListOf(
                     SolarFlareDaySummary(
-                        maxFlareClassFull = "X1.0",
-                        maxFlareClass = SolarFlareDaySummary.Class.X,
+                        maxFlareClass = "X1.0",
                         flareCount = 5,
                         peakTimeOfMaxFlare = "12:00:00",
                         date = "Fri 11 April"
                     ),
                     SolarFlareDaySummary(
-                        maxFlareClassFull = "M1.0",
-                        maxFlareClass = SolarFlareDaySummary.Class.M,
+                        maxFlareClass = "M1.0",
                         flareCount = 3,
                         peakTimeOfMaxFlare = "14:00:00",
                         date = "Fri 12 April"
@@ -74,12 +72,12 @@ private fun WeatherScreenUiPreview() {
             geomagneticStormsState = GeomagneticStormsState.Data(
                 data = persistentListOf(
                     GeomagneticStormDaySummary(
-                        maxKpIndex = 9.7,
+                        maxKpIndex = 9,
                         kpCount = 4,
                         date = "11 April"
                     ),
                     GeomagneticStormDaySummary(
-                        maxKpIndex = 3.01,
+                        maxKpIndex = 3,
                         kpCount = 1,
                         date = "12 April"
                     ),

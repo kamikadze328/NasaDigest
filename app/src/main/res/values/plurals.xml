@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="asteroid_hazardous_amount">
+        <item quantity="one">%s hazardous asteroid</item>
+        <item quantity="other">%s hazardous asteroids</item>
+    </plurals>
+</resources>

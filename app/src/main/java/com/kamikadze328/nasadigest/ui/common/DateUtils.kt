@@ -5,7 +5,7 @@ import org.joda.time.LocalDate
 import org.joda.time.format.DateTimeFormat
 import java.util.Locale
 
-private val dateFormat = DateTimeFormat.forPattern("E dd MMMM yyyy")
+private val dateFormat = DateTimeFormat.forPattern("dd MMMM yyyy (E)")
 private val timeFormat = DateTimeFormat.forPattern("hh:mm")
 private val dateTimeFormat = DateTimeFormat.forPattern("dd MMMM")
 

@@ -7,6 +7,7 @@ plugins {
     alias(libs.plugins.kotlin.serialization)
     alias(libs.plugins.goolge.dagger.hilt.android)
     alias(libs.plugins.google.devtools.ksp)
+    alias(libs.plugins.room)
 }
 
 
@@ -43,6 +44,9 @@ android {
     }
     kotlinOptions {
         jvmTarget = "17"
+    }
+    room {
+        schemaDirectory("$projectDir/schemas")
     }
 }
 

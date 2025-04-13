@@ -115,21 +115,19 @@ private fun SolarFlareTitleUi(onRefresh: () -> Unit) {
 private fun SolarFlareDaySummaryUi(
     data: SolarFlareDaySummary,
 ) {
-    val background = when (data.maxFlareClass) {
+    val background = when (data.maxFlareClassName) {
         SolarFlareDaySummary.Class.X -> MaterialTheme.colorScheme.error
         SolarFlareDaySummary.Class.M -> MaterialTheme.colorScheme.tertiary
         SolarFlareDaySummary.Class.C -> MaterialTheme.colorScheme.primary
         SolarFlareDaySummary.Class.B -> MaterialTheme.colorScheme.errorContainer
         SolarFlareDaySummary.Class.A -> MaterialTheme.colorScheme.primaryContainer
-        null -> MaterialTheme.colorScheme.primaryContainer
     }
-    val textColor = when (data.maxFlareClass) {
+    val textColor = when (data.maxFlareClassName) {
         SolarFlareDaySummary.Class.X -> MaterialTheme.colorScheme.onError
         SolarFlareDaySummary.Class.M -> MaterialTheme.colorScheme.onTertiary
         SolarFlareDaySummary.Class.C -> MaterialTheme.colorScheme.onPrimary
         SolarFlareDaySummary.Class.B -> MaterialTheme.colorScheme.onErrorContainer
         SolarFlareDaySummary.Class.A -> MaterialTheme.colorScheme.onPrimaryContainer
-        null -> MaterialTheme.colorScheme.onPrimaryContainer
     }
     Column(
         modifier = Modifier
@@ -143,7 +141,7 @@ private fun SolarFlareDaySummaryUi(
             color = textColor,
         )
         Text(
-            text = stringResource(R.string.solar_flares_max_class, data.maxFlareClassFull),
+            text = stringResource(R.string.solar_flares_max_class, data.maxFlareClass),
             style = MaterialTheme.typography.bodyMedium,
             color = textColor,
         )
@@ -167,15 +165,13 @@ private fun SolarFlarePreviewUi() {
         uiState = SolarFlareState.Data(
             data = persistentListOf(
                 SolarFlareDaySummary(
-                    maxFlareClassFull = "X1.0",
-                    maxFlareClass = SolarFlareDaySummary.Class.X,
+                    maxFlareClass = "X1.0",
                     flareCount = 5,
                     peakTimeOfMaxFlare = "12:00:00",
                     date = "Fri 11 April"
                 ),
                 SolarFlareDaySummary(
-                    maxFlareClassFull = "M1.0",
-                    maxFlareClass = SolarFlareDaySummary.Class.M,
+                    maxFlareClass = "M1.0",
                     flareCount = 3,
                     peakTimeOfMaxFlare = "14:00:00",
                     date = "Fri 12 April"

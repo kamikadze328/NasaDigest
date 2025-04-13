@@ -17,6 +17,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.ColorFilter
+import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -94,7 +95,14 @@ private fun AsteroidsListUi(
             uiState.data.data.forEach {
                 val date = it.key
                 val asteroids = it.value
-                item(key = date) { ItemDateUi(date = date) }
+                item(key = date) {
+                    ItemDateUi(
+                        date = date,
+                        hazardousAsteroidsAmount = asteroids.count { asteroid ->
+                            asteroid.isPotentiallyHazardousAsteroid
+                        },
+                    )
+                }
                 items(
                     items = asteroids,
                     key = { asteroid -> asteroid.id }
@@ -114,17 +122,37 @@ private fun AsteroidsListUi(
 }
 
 @Composable
-private fun ItemDateUi(date: String) {
-    Text(
-        text = date,
-        style = MaterialTheme.typography.headlineMedium,
+private fun ItemDateUi(date: String, hazardousAsteroidsAmount: Int) {
+    Column(
         modifier = Modifier
-            .background(MaterialTheme.colorScheme.primaryContainer)
             .fillMaxWidth()
             .wrapContentHeight()
+            .background(MaterialTheme.colorScheme.primaryContainer)
             .padding(16.dp),
-        color = MaterialTheme.colorScheme.onPrimaryContainer
-    )
+    ) {
+        Text(
+            text = date,
+            style = MaterialTheme.typography.headlineMedium,
+            modifier = Modifier,
+            color = MaterialTheme.colorScheme.onPrimaryContainer
+        )
+        val amountText = if (hazardousAsteroidsAmount == 0) {
+            stringResource(id = R.string.asteroid_hazardous_amount_zero)
+        } else {
+            pluralStringResource(
+                id = R.plurals.asteroid_hazardous_amount,
+                hazardousAsteroidsAmount,
+                hazardousAsteroidsAmount
+            )
+        }
+        Text(
+            text = amountText,
+            style = MaterialTheme.typography.labelMedium,
+            modifier = Modifier,
+            color = MaterialTheme.colorScheme.onPrimaryContainer
+        )
+
+    }
 }
 
 @Composable

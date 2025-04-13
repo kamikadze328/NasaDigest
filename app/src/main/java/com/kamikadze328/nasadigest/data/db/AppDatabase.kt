@@ -10,7 +10,7 @@ import com.kamikadze328.nasadigest.ui.features.weather.model.SolarFlareDaySummar
         GeomagneticStormDaySummary::class,
         SolarFlareDaySummary::class
     ],
-    version = 2
+    version = 3
 )
 abstract class AppDatabase : RoomDatabase() {
     abstract fun geomagneticStormsDao(): GeomagneticStormsDao

@@ -18,23 +18,11 @@ class SolarFlareMapper @Inject constructor(
                 val maxFlareClass = maxFlare?.classType
                 SolarFlareDaySummary(
                     date = date?.prettyPrintShort() ?: return@mapNotNull null,
-                    maxFlareClass = maxFlare?.classType?.toSolarClassUi(),
-                    maxFlareClassFull = maxFlareClass.orEmpty(),
+                    maxFlareClass = maxFlareClass.orEmpty(),
                     peakTimeOfMaxFlare = dateParser.parseToPrettyPrintTime(maxFlare?.peakTime)
                         .orEmpty(),
                     flareCount = list.size,
                 )
             }
-    }
-
-    private fun String.toSolarClassUi(): SolarFlareDaySummary.Class? {
-        return when {
-            startsWith("X", ignoreCase = true) -> SolarFlareDaySummary.Class.X
-            startsWith("M", ignoreCase = true) -> SolarFlareDaySummary.Class.M
-            startsWith("C", ignoreCase = true) -> SolarFlareDaySummary.Class.C
-            startsWith("B", ignoreCase = true) -> SolarFlareDaySummary.Class.B
-            startsWith("A", ignoreCase = true) -> SolarFlareDaySummary.Class.A
-            else -> null
-        }
     }
 }

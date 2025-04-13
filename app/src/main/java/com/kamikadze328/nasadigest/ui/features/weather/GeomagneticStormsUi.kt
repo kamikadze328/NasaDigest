@@ -25,7 +25,6 @@ import com.kamikadze328.nasadigest.ui.common.LoadingScreenUi
 import com.kamikadze328.nasadigest.ui.features.weather.model.GeomagneticStormDaySummary
 import com.kamikadze328.nasadigest.ui.features.weather.model.GeomagneticStormsState
 import kotlinx.collections.immutable.persistentListOf
-import kotlin.math.roundToInt
 
 @Composable
 internal fun GeomagneticStormsUi(
@@ -116,21 +115,19 @@ private fun GeomagneticStormTitleUi(onRefresh: () -> Unit) {
 private fun GeomagneticStormDaySummaryUi(
     data: GeomagneticStormDaySummary,
 ) {
-    val background = when (data.maxKpIndex?.roundToInt()) {
-        in 0..2 -> MaterialTheme.colorScheme.primaryContainer
-        in 3..4 -> MaterialTheme.colorScheme.errorContainer
-        in 5..6 -> MaterialTheme.colorScheme.primary
-        in 7..8 -> MaterialTheme.colorScheme.tertiary
-        in 8..10 -> MaterialTheme.colorScheme.error
-        else -> MaterialTheme.colorScheme.primaryContainer
+    val background = when (data.maxKpIndexType) {
+        GeomagneticStormDaySummary.KpType.Quiet -> MaterialTheme.colorScheme.primaryContainer
+        GeomagneticStormDaySummary.KpType.MinorStorm -> MaterialTheme.colorScheme.errorContainer
+        GeomagneticStormDaySummary.KpType.ModerateStorm -> MaterialTheme.colorScheme.primary
+        GeomagneticStormDaySummary.KpType.StrongStorm -> MaterialTheme.colorScheme.tertiary
+        GeomagneticStormDaySummary.KpType.ExtremeStorm -> MaterialTheme.colorScheme.error
     }
-    val textColor = when (data.maxKpIndex?.roundToInt()) {
-        in 0..2 -> MaterialTheme.colorScheme.onPrimaryContainer
-        in 3..4 -> MaterialTheme.colorScheme.onErrorContainer
-        in 5..6 -> MaterialTheme.colorScheme.onPrimary
-        in 7..8 -> MaterialTheme.colorScheme.onTertiary
-        in 8..10 -> MaterialTheme.colorScheme.onError
-        else -> MaterialTheme.colorScheme.onPrimaryContainer
+    val textColor = when (data.maxKpIndexType) {
+        GeomagneticStormDaySummary.KpType.Quiet -> MaterialTheme.colorScheme.onPrimaryContainer
+        GeomagneticStormDaySummary.KpType.MinorStorm -> MaterialTheme.colorScheme.onErrorContainer
+        GeomagneticStormDaySummary.KpType.ModerateStorm -> MaterialTheme.colorScheme.onPrimary
+        GeomagneticStormDaySummary.KpType.StrongStorm -> MaterialTheme.colorScheme.onTertiary
+        GeomagneticStormDaySummary.KpType.ExtremeStorm -> MaterialTheme.colorScheme.onError
     }
     Column(
         modifier = Modifier
@@ -145,7 +142,7 @@ private fun GeomagneticStormDaySummaryUi(
         )
         if (data.maxKpIndex != null) {
             Text(
-                text = stringResource(R.string.geomagnetic_storms_max_kp, data.maxKpIndex),
+                text = stringResource(id = R.string.geomagnetic_storms_max_kp, data.maxKpIndex),
                 style = MaterialTheme.typography.bodyMedium,
                 color = textColor,
             )
@@ -165,12 +162,12 @@ private fun GeomagneticStormsPreviewUi() {
         uiState = GeomagneticStormsState.Data(
             data = persistentListOf(
                 GeomagneticStormDaySummary(
-                    maxKpIndex = 9.7,
+                    maxKpIndex = 9,
                     kpCount = 4,
                     date = "11 April"
                 ),
                 GeomagneticStormDaySummary(
-                    maxKpIndex = 1.12,
+                    maxKpIndex = 1,
                     kpCount = 1,
                     date = "12 April"
                 )
