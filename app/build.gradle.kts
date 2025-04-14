@@ -23,7 +23,7 @@ android {
         versionName = "1.0"
 
         val key = gradleLocalProperties(rootDir, providers).getProperty("nasa.api.key")
-        buildConfigField("String", "NASA_API_KEY", "\"$key\"")
+        buildConfigField("String", "NASA_API_KEY", key)
     }
 
     buildTypes {
