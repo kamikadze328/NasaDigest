@@ -77,8 +77,8 @@ private fun PictureOfTheDayDataUi(
         modifier = Modifier
             .fillMaxSize()
             .background(color = MaterialTheme.colorScheme.background)
-            .padding(vertical = 16.dp)
-            .verticalScroll(state = rememberScrollState()),
+            .verticalScroll(state = rememberScrollState())
+            .padding(vertical = 16.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.spacedBy(16.dp),
     ) {
@@ -107,7 +107,9 @@ private fun PictureOfTheDayDataUi(
                         modifier = Modifier
                             .fillMaxSize()
                             .wrapContentSize(Alignment.Center)
-                            .size(64.dp),
+                            .size(48.dp),
+                        color = MaterialTheme.colorScheme.primary,
+                        trackColor = MaterialTheme.colorScheme.surfaceVariant,
                     )
                 },
                 error = {
@@ -119,15 +121,17 @@ private fun PictureOfTheDayDataUi(
                 },
                 contentDescription = uiState.title,
             )
-            Text(
-                modifier = Modifier
-                    .align(Alignment.BottomEnd)
-                    .background(MaterialTheme.colorScheme.surface)
-                    .padding(4.dp),
-                text = uiState.copyright.orEmpty(),
-                style = MaterialTheme.typography.labelSmall,
-                color = MaterialTheme.colorScheme.onSurface,
-            )
+            if (!uiState.copyright.isNullOrEmpty()) {
+                Text(
+                    modifier = Modifier
+                        .align(Alignment.BottomEnd)
+                        .background(MaterialTheme.colorScheme.surface)
+                        .padding(4.dp),
+                    text = uiState.copyright,
+                    style = MaterialTheme.typography.labelSmall,
+                    color = MaterialTheme.colorScheme.onSurface,
+                )
+            }
         }
         Text(
             modifier = Modifier

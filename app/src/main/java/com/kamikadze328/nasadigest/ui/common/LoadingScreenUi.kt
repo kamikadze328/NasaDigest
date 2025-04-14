@@ -22,7 +22,7 @@ fun LoadingScreenUi(
         CircularProgressIndicator(
             modifier = Modifier
                 .align(Alignment.Center),
-            color = MaterialTheme.colorScheme.secondary,
+            color = MaterialTheme.colorScheme.primary,
             trackColor = MaterialTheme.colorScheme.surfaceVariant,
         )
     }
