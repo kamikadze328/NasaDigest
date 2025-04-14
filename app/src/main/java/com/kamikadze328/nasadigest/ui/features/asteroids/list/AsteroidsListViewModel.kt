@@ -79,12 +79,16 @@ class AsteroidsListViewModel @Inject constructor(
     }
 
     private fun NeoFeedDto.toUi(): AsteroidListUi {
-        val uiData = nearEarthObjects.mapNotNull {
-            val date = dateParser.parseToPrettyPrint(it.key) ?: return@mapNotNull null
-            val uiList = it.value.mapNotNull { asteroid -> asteroid.toUi() }.toImmutableList()
+        val uiData = nearEarthObjects
+            .toSortedMap(compareBy { dateParser.parse(it) })
+            .mapNotNull {
+                val date = dateParser.parseToPrettyPrint(it.key) ?: return@mapNotNull null
+                val uiList = it.value.mapNotNull { asteroid -> asteroid.toUi() }.toImmutableList()
 
-            date to uiList
-        }.toMap().toImmutableMap()
+                date to uiList
+            }
+            .toMap()
+            .toImmutableMap()
 
         return AsteroidListUi(
             data = uiData
