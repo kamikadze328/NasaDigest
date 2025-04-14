@@ -30,6 +30,7 @@ import com.kamikadze328.nasadigest.ui.features.asteroids.info.model.AsteroidInfo
 import com.kamikadze328.nasadigest.ui.features.asteroids.list.model.AsteroidInListUi
 import com.kamikadze328.nasadigest.ui.features.asteroids.list.model.AsteroidListUi
 import com.kamikadze328.nasadigest.ui.features.asteroids.list.model.AsteroidsListUiState
+import com.kamikadze328.nasadigest.ui.theme.NasaDigestTheme
 import kotlinx.collections.immutable.persistentListOf
 import kotlinx.collections.immutable.persistentMapOf
 import org.joda.time.LocalDate
@@ -230,60 +231,62 @@ private fun ItemAsteroidUi(asteroid: AsteroidInListUi, onClick: () -> Unit) {
 @Preview
 @Composable
 private fun AsteroidsListScreenUiPreview() {
-    AsteroidsListScreenUi(
-        uiState = AsteroidsListUiState.Success(
-            data = AsteroidListUi(
-                data = persistentMapOf(
-                    LocalDate().prettyPrint() to persistentListOf(
-                        AsteroidInListUi(
-                            id = "1",
-                            name = "Asteroid 1",
-                            diameterMin = 0.5,
-                            diameterMax = 1.0,
-                            isPotentiallyHazardousAsteroid = true,
-                            absoluteMagnitudeH = 22.0
+    NasaDigestTheme {
+        AsteroidsListScreenUi(
+            uiState = AsteroidsListUiState.Success(
+                data = AsteroidListUi(
+                    data = persistentMapOf(
+                        LocalDate().prettyPrint() to persistentListOf(
+                            AsteroidInListUi(
+                                id = "1",
+                                name = "Asteroid 1",
+                                diameterMin = 0.5,
+                                diameterMax = 1.0,
+                                isPotentiallyHazardousAsteroid = true,
+                                absoluteMagnitudeH = 22.0
+                            ),
+                            AsteroidInListUi(
+                                id = "2",
+                                name = "Asteroid 2",
+                                diameterMin = 0.4,
+                                diameterMax = 2.0,
+                                isPotentiallyHazardousAsteroid = false,
+                                absoluteMagnitudeH = 412.0
+                            ),
+                            AsteroidInListUi(
+                                id = "3",
+                                name = "Asteroid 3",
+                                diameterMin = 0.5,
+                                diameterMax = 1.0,
+                                isPotentiallyHazardousAsteroid = false,
+                                absoluteMagnitudeH = 12.0
+                            )
                         ),
-                        AsteroidInListUi(
-                            id = "2",
-                            name = "Asteroid 2",
-                            diameterMin = 0.4,
-                            diameterMax = 2.0,
-                            isPotentiallyHazardousAsteroid = false,
-                            absoluteMagnitudeH = 412.0
+                        LocalDate().plusDays(1).prettyPrint() to persistentListOf(
+                            AsteroidInListUi(
+                                id = "7",
+                                name = "Asteroid7",
+                                diameterMin = 123.5,
+                                diameterMax = 2123.0,
+                                isPotentiallyHazardousAsteroid = true,
+                                absoluteMagnitudeH = 123.0
+                            )
                         ),
-                        AsteroidInListUi(
-                            id = "3",
-                            name = "Asteroid 3",
-                            diameterMin = 0.5,
-                            diameterMax = 1.0,
-                            isPotentiallyHazardousAsteroid = false,
-                            absoluteMagnitudeH = 12.0
-                        )
-                    ),
-                    LocalDate().plusDays(1).prettyPrint() to persistentListOf(
-                        AsteroidInListUi(
-                            id = "7",
-                            name = "Asteroid7",
-                            diameterMin = 123.5,
-                            diameterMax = 2123.0,
-                            isPotentiallyHazardousAsteroid = true,
-                            absoluteMagnitudeH = 123.0
-                        )
-                    ),
-                    LocalDate().plusDays(2).prettyPrint() to persistentListOf(
-                        AsteroidInListUi(
-                            id = "6",
-                            name = "Asteroid 6",
-                            diameterMin = 0.1235,
-                            diameterMax = 1.0123,
-                            isPotentiallyHazardousAsteroid = false,
-                            absoluteMagnitudeH = 21232.0
-                        )
-                    ),
+                        LocalDate().plusDays(2).prettyPrint() to persistentListOf(
+                            AsteroidInListUi(
+                                id = "6",
+                                name = "Asteroid 6",
+                                diameterMin = 0.1235,
+                                diameterMax = 1.0123,
+                                isPotentiallyHazardousAsteroid = false,
+                                absoluteMagnitudeH = 21232.0
+                            )
+                        ),
+                    )
                 )
-            )
-        ),
-        onEvent = {},
-        navigateToAsteroidInfo = {},
-    )
+            ),
+            onEvent = {},
+            navigateToAsteroidInfo = {},
+        )
+    }
 }

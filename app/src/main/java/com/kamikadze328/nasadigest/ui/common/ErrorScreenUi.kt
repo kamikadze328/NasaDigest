@@ -17,6 +17,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.kamikadze328.nasadigest.R
+import com.kamikadze328.nasadigest.ui.theme.NasaDigestTheme
 
 @Composable
 fun ErrorScreenUi(
@@ -69,8 +70,10 @@ fun ErrorScreenUi(
 @Composable
 @Preview
 private fun ErrorScreenUiPreview() {
-    ErrorScreenUi(
-        text = stringResource(id = R.string.default_error_text),
-        onRefresh = {},
-    )
+    NasaDigestTheme {
+        ErrorScreenUi(
+            text = stringResource(id = R.string.default_error_text),
+            onRefresh = {},
+        )
+    }
 }

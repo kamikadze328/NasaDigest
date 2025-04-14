@@ -24,6 +24,7 @@ import com.kamikadze328.nasadigest.ui.common.ErrorScreenUi
 import com.kamikadze328.nasadigest.ui.common.LoadingScreenUi
 import com.kamikadze328.nasadigest.ui.features.weather.model.SolarFlareDaySummary
 import com.kamikadze328.nasadigest.ui.features.weather.model.SolarFlareState
+import com.kamikadze328.nasadigest.ui.theme.NasaDigestTheme
 import kotlinx.collections.immutable.persistentListOf
 
 @Composable
@@ -161,23 +162,25 @@ private fun SolarFlareDaySummaryUi(
 @Preview
 @Composable
 private fun SolarFlarePreviewUi() {
-    SolarFlareUi(
-        uiState = SolarFlareState.Data(
-            data = persistentListOf(
-                SolarFlareDaySummary(
-                    maxFlareClass = "X1.0",
-                    flareCount = 5,
-                    peakTimeOfMaxFlare = "12:00:00",
-                    date = "Fri 11 April"
-                ),
-                SolarFlareDaySummary(
-                    maxFlareClass = "M1.0",
-                    flareCount = 3,
-                    peakTimeOfMaxFlare = "14:00:00",
-                    date = "Fri 12 April"
+    NasaDigestTheme {
+        SolarFlareUi(
+            uiState = SolarFlareState.Data(
+                data = persistentListOf(
+                    SolarFlareDaySummary(
+                        maxFlareClass = "X1.0",
+                        flareCount = 5,
+                        peakTimeOfMaxFlare = "12:00:00",
+                        date = "Fri 11 April"
+                    ),
+                    SolarFlareDaySummary(
+                        maxFlareClass = "M1.0",
+                        flareCount = 3,
+                        peakTimeOfMaxFlare = "14:00:00",
+                        date = "Fri 12 April"
+                    )
                 )
-            )
-        ),
-        onRefresh = {},
-    )
+            ),
+            onRefresh = {},
+        )
+    }
 }

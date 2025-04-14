@@ -12,6 +12,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.kamikadze328.nasadigest.ui.features.weather.model.*
+import com.kamikadze328.nasadigest.ui.theme.NasaDigestTheme
 import kotlinx.collections.immutable.persistentListOf
 
 @Composable
@@ -51,39 +52,41 @@ private fun WeatherScreenUi(
 @Preview
 @Composable
 private fun WeatherScreenUiPreview() {
-    WeatherScreenUi(
-        uiState = WeatherUiState(
-            solarFlareState = SolarFlareState.Data(
-                data = persistentListOf(
-                    SolarFlareDaySummary(
-                        maxFlareClass = "X1.0",
-                        flareCount = 5,
-                        peakTimeOfMaxFlare = "12:00:00",
-                        date = "Fri 11 April"
-                    ),
-                    SolarFlareDaySummary(
-                        maxFlareClass = "M1.0",
-                        flareCount = 3,
-                        peakTimeOfMaxFlare = "14:00:00",
-                        date = "Fri 12 April"
+    NasaDigestTheme {
+        WeatherScreenUi(
+            uiState = WeatherUiState(
+                solarFlareState = SolarFlareState.Data(
+                    data = persistentListOf(
+                        SolarFlareDaySummary(
+                            maxFlareClass = "X1.0",
+                            flareCount = 5,
+                            peakTimeOfMaxFlare = "12:00:00",
+                            date = "Fri 11 April"
+                        ),
+                        SolarFlareDaySummary(
+                            maxFlareClass = "M1.0",
+                            flareCount = 3,
+                            peakTimeOfMaxFlare = "14:00:00",
+                            date = "Fri 12 April"
+                        )
+                    )
+                ),
+                geomagneticStormsState = GeomagneticStormsState.Data(
+                    data = persistentListOf(
+                        GeomagneticStormDaySummary(
+                            maxKpIndex = 9,
+                            kpCount = 4,
+                            date = "11 April"
+                        ),
+                        GeomagneticStormDaySummary(
+                            maxKpIndex = 3,
+                            kpCount = 1,
+                            date = "12 April"
+                        ),
                     )
                 )
             ),
-            geomagneticStormsState = GeomagneticStormsState.Data(
-                data = persistentListOf(
-                    GeomagneticStormDaySummary(
-                        maxKpIndex = 9,
-                        kpCount = 4,
-                        date = "11 April"
-                    ),
-                    GeomagneticStormDaySummary(
-                        maxKpIndex = 3,
-                        kpCount = 1,
-                        date = "12 April"
-                    ),
-                )
-            )
-        ),
-        onEvent = {},
-    )
+            onEvent = {},
+        )
+    }
 }

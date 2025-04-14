@@ -24,6 +24,7 @@ import com.kamikadze328.nasadigest.ui.common.ErrorScreenUi
 import com.kamikadze328.nasadigest.ui.common.LoadingScreenUi
 import com.kamikadze328.nasadigest.ui.features.weather.model.GeomagneticStormDaySummary
 import com.kamikadze328.nasadigest.ui.features.weather.model.GeomagneticStormsState
+import com.kamikadze328.nasadigest.ui.theme.NasaDigestTheme
 import kotlinx.collections.immutable.persistentListOf
 
 @Composable
@@ -158,21 +159,23 @@ private fun GeomagneticStormDaySummaryUi(
 @Preview
 @Composable
 private fun GeomagneticStormsPreviewUi() {
-    GeomagneticStormsUi(
-        uiState = GeomagneticStormsState.Data(
-            data = persistentListOf(
-                GeomagneticStormDaySummary(
-                    maxKpIndex = 9,
-                    kpCount = 4,
-                    date = "11 April"
-                ),
-                GeomagneticStormDaySummary(
-                    maxKpIndex = 1,
-                    kpCount = 1,
-                    date = "12 April"
+    NasaDigestTheme {
+        GeomagneticStormsUi(
+            uiState = GeomagneticStormsState.Data(
+                data = persistentListOf(
+                    GeomagneticStormDaySummary(
+                        maxKpIndex = 9,
+                        kpCount = 4,
+                        date = "11 April"
+                    ),
+                    GeomagneticStormDaySummary(
+                        maxKpIndex = 1,
+                        kpCount = 1,
+                        date = "12 April"
+                    )
                 )
-            )
-        ),
-        onRefresh = {},
-    )
+            ),
+            onRefresh = {},
+        )
+    }
 }

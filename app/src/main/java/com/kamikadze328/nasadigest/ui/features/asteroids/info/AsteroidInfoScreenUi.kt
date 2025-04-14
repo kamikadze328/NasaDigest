@@ -24,6 +24,7 @@ import com.kamikadze328.nasadigest.ui.common.ErrorScreenUi
 import com.kamikadze328.nasadigest.ui.common.LoadingScreenUi
 import com.kamikadze328.nasadigest.ui.features.asteroids.info.model.AsteroidInfoUi
 import com.kamikadze328.nasadigest.ui.features.asteroids.info.model.AsteroidInfoUiState
+import com.kamikadze328.nasadigest.ui.theme.NasaDigestTheme
 import java.util.Date
 
 @Composable
@@ -163,21 +164,23 @@ private fun AsteroidInfoUi(asteroid: AsteroidInfoUi) {
 @Preview
 @Composable
 private fun AsteroidInfoScreenUiPreview() {
-    AsteroidInfoScreenUi(
-        uiState = AsteroidInfoUiState.Success(
-            asteroid = AsteroidInfoUi(
-                id = "12345",
-                name = "Asteroid 12345",
-                diameterMin = 0.5,
-                diameterMax = 1.5,
-                isPotentiallyHazardousAsteroid = true,
-                firstObservationDate = Date().toString(),
-                absoluteMagnitudeH = 22.0,
-                orbitalClassDescription = "Apollo",
-                orbitalClassType = "A",
-                url = "https://example.com/asteroid/12345",
-            )
-        ),
-        onEvent = {}
-    )
+    NasaDigestTheme {
+        AsteroidInfoScreenUi(
+            uiState = AsteroidInfoUiState.Success(
+                asteroid = AsteroidInfoUi(
+                    id = "12345",
+                    name = "Asteroid 12345",
+                    diameterMin = 0.5,
+                    diameterMax = 1.5,
+                    isPotentiallyHazardousAsteroid = true,
+                    firstObservationDate = Date().toString(),
+                    absoluteMagnitudeH = 22.0,
+                    orbitalClassDescription = "Apollo",
+                    orbitalClassType = "A",
+                    url = "https://example.com/asteroid/12345",
+                )
+            ),
+            onEvent = {}
+        )
+    }
 }

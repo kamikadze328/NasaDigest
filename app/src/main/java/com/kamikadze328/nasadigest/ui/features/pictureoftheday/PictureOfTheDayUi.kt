@@ -25,6 +25,7 @@ import com.kamikadze328.nasadigest.ui.common.ErrorScreenUi
 import com.kamikadze328.nasadigest.ui.common.LoadingScreenUi
 import com.kamikadze328.nasadigest.ui.common.prettyPrint
 import com.kamikadze328.nasadigest.ui.features.pictureoftheday.model.PictureOfTheDayUiState
+import com.kamikadze328.nasadigest.ui.theme.NasaDigestTheme
 import org.joda.time.LocalDate
 
 @Composable
@@ -141,15 +142,17 @@ private fun PictureOfTheDayDataUi(
 @Composable
 @Preview
 private fun PictureOfTheDayScreenUiPreview() {
-    PictureOfTheDayScreenUi(
-        uiState = PictureOfTheDayUiState.Success(
-            title = "Title",
-            explanation = "Explanation",
-            copyright = "copyright",
-            url = "https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png",
-            date = LocalDate().prettyPrint(),
-        ),
-        onEvent = {}
-    )
+    NasaDigestTheme {
+        PictureOfTheDayScreenUi(
+            uiState = PictureOfTheDayUiState.Success(
+                title = "Title",
+                explanation = "Explanation",
+                copyright = "copyright",
+                url = "https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png",
+                date = LocalDate().prettyPrint(),
+            ),
+            onEvent = {}
+        )
+    }
 }
 
