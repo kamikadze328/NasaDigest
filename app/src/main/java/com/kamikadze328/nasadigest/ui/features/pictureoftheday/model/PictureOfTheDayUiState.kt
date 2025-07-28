@@ -1,6 +1,7 @@
 package com.kamikadze328.nasadigest.ui.features.pictureoftheday.model
 
 import androidx.compose.runtime.Immutable
+import org.joda.time.LocalDate
 
 @Immutable
 sealed interface PictureOfTheDayUiState {
@@ -11,8 +12,15 @@ sealed interface PictureOfTheDayUiState {
     data class Success(
         val title: String?,
         val explanation: String?,
-        val url: String,
-        val date: String,
+        val url: String?,
+        val mediaType: MediaType,
+        val date: LocalDate,
         val copyright: String?,
-    ) : PictureOfTheDayUiState
+    ) : PictureOfTheDayUiState {
+        enum class MediaType {
+            IMAGE,
+            VIDEO,
+            OTHER;
+        }
+    }
 }

@@ -13,12 +13,12 @@ plugins {
 
 android {
     namespace = "com.kamikadze328.nasadigest"
-    compileSdk = 35
+    compileSdk = 36
 
     defaultConfig {
         applicationId = "com.kamikadze328.nasadigest"
         minSdk = 24
-        targetSdk = 35
+        targetSdk = 36
         versionCode = 1
         versionName = "1.0"
 
@@ -37,14 +37,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
+        sourceCompatibility = JavaVersion.VERSION_21
+        targetCompatibility = JavaVersion.VERSION_21
     }
     buildFeatures {
         buildConfig = true
-    }
-    kotlinOptions {
-        jvmTarget = "17"
     }
     room {
         schemaDirectory("$projectDir/schemas")
@@ -52,7 +49,6 @@ android {
 }
 
 dependencies {
-    implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
@@ -75,6 +71,7 @@ dependencies {
     implementation(libs.androidx.hilt.navigation.compose)
     implementation(libs.coil.compose)
     implementation(libs.coil.network.ktor)
+    implementation(libs.coil.video)
     implementation(libs.kotlinx.collections.immutable)
     implementation(libs.room.runtime)
     implementation(libs.room.ktx)

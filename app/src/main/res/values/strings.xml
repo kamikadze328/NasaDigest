@@ -5,6 +5,7 @@
     <string name="asteroids_title">Asteroids</string>
     <string name="refresh">Refresh</string>
     <string name="default_error_text">Sorry, something went wrong. Please try again later</string>
+    <string name="picture_of_the_day_open_in_browser">Open in browser</string>
     <string name="asteroid_hazardous_amount_zero">You are safe now</string>
     <string name="asteroid_diameter_km">Diameter: %s - %s km</string>
     <string name="asteroid_absolute_magnitude">Absolute Magnitude: %s</string>

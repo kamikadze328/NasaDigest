@@ -7,7 +7,6 @@ import com.kamikadze328.nasadigest.data.Result
 import com.kamikadze328.nasadigest.data.features.picturesoftheday.ApodDto
 import com.kamikadze328.nasadigest.data.features.picturesoftheday.PictureOfTheDayRepository
 import com.kamikadze328.nasadigest.ui.common.DateParser
-import com.kamikadze328.nasadigest.ui.common.prettyPrint
 import com.kamikadze328.nasadigest.ui.features.pictureoftheday.model.PictureOfTheDayUiState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -78,7 +77,7 @@ class PictureOfTheDayViewModel @Inject constructor(
     }
 
     private fun ApodDto.toUi(): PictureOfTheDayUiState {
-        if (title == null || url == null) {
+        if (title == null) {
             return PictureOfTheDayUiState.Error(null)
         }
         return PictureOfTheDayUiState.Success(
@@ -86,7 +85,12 @@ class PictureOfTheDayViewModel @Inject constructor(
             explanation = explanation,
             url = url,
             copyright = copyright,
-            date = dateParser.parseToPrettyPrint(date) ?: LocalDate().prettyPrint()
+            mediaType = when (mediaType) {
+                ApodDto.MEDIA_TYPE_IMAGE -> PictureOfTheDayUiState.Success.MediaType.IMAGE
+                ApodDto.MEDIA_TYPE_VIDEO -> PictureOfTheDayUiState.Success.MediaType.VIDEO
+                else -> PictureOfTheDayUiState.Success.MediaType.OTHER
+            },
+            date = dateParser.parse(date) ?: LocalDate()
         )
     }
 }
