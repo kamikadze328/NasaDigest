@@ -2,7 +2,6 @@ import com.android.build.gradle.internal.cxx.configure.gradleLocalProperties
 
 plugins {
     alias(libs.plugins.android.application)
-    alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.kotlin.serialization)
     alias(libs.plugins.goolge.dagger.hilt.android)
@@ -13,7 +12,7 @@ plugins {
 
 android {
     namespace = "com.kamikadze328.nasadigest"
-    compileSdk = 36
+    compileSdk = 37
 
     defaultConfig {
         applicationId = "com.kamikadze328.nasadigest"
@@ -23,7 +22,7 @@ android {
         versionName = "1.0"
 
         val key = gradleLocalProperties(rootDir, providers).getProperty("nasa.api.key")
-        buildConfigField("String", "NASA_API_KEY", key)
+        buildConfigField("String", "NASA_API_KEY", "\"$key\"")
     }
 
     buildTypes {
@@ -70,6 +69,7 @@ dependencies {
     ksp(libs.google.dagger.hilt.compiler)
     implementation(libs.androidx.hilt.navigation.compose)
     implementation(libs.coil.compose)
+    implementation(libs.androidx.material.icons.extended)
     implementation(libs.coil.network.ktor)
     implementation(libs.coil.video)
     implementation(libs.kotlinx.collections.immutable)

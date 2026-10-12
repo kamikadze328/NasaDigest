@@ -9,7 +9,7 @@ import javax.inject.Inject
 class ApodApiNetworkDataSource @Inject constructor(
     private val nasaSecretsRepository: SecretsRepository,
 ) {
-    suspend fun fetchPictureOfTheDay(): Result<ApodDto> {
-        return client.get("https://api.nasa.gov/planetary/apod?api_key=${nasaSecretsRepository.nasaApiKey}")
+    suspend fun fetchPictureOfTheDay(): Result<List<ApodDto>> {
+        return client.get("https://science.nasa.gov/wp-json/wp/v2/apod-basic?api_key=${nasaSecretsRepository.nasaApiKey}")
     }
 }

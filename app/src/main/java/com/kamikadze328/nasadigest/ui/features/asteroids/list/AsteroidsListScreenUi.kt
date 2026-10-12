@@ -11,7 +11,6 @@ import androidx.compose.material.icons.filled.Warning
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
@@ -21,7 +20,8 @@ import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.kamikadze328.nasadigest.R
 import com.kamikadze328.nasadigest.ui.common.ErrorScreenUi
 import com.kamikadze328.nasadigest.ui.common.LoadingScreenUi
@@ -40,7 +40,7 @@ fun AsteroidsListScreenUi(
     viewModel: AsteroidsListViewModel = hiltViewModel(),
     navigateToAsteroidInfo: (AsteroidInfoArgs) -> Unit,
 ) {
-    val uiState by viewModel.uiState.collectAsState()
+    val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
     AsteroidsListScreenUi(
         uiState = uiState,
@@ -65,7 +65,7 @@ private fun AsteroidsListScreenUi(
                 LoadingScreenUi(modifier = Modifier.fillMaxSize())
             }
 
-            is AsteroidsListUiState.Error -> {
+            is AsteroidsListUiState.Error   -> {
                 ErrorScreenUi(
                     modifier = Modifier.fillMaxSize(),
                     text = uiState.error,
@@ -81,7 +81,6 @@ private fun AsteroidsListScreenUi(
             }
         }
     }
-
 }
 
 @Composable
@@ -226,7 +225,6 @@ private fun ItemAsteroidUi(asteroid: AsteroidInListUi, onClick: () -> Unit) {
         }
     }
 }
-
 
 @Preview
 @Composable

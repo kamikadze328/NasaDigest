@@ -10,7 +10,10 @@ class PictureOfTheDayRepository @Inject constructor(
 ) {
     suspend fun getPictureOfTheDay(): Result<ApodDto> {
         return withContext(Dispatchers.IO) {
-            networkDataSource.fetchPictureOfTheDay()
+            when (val resultList = networkDataSource.fetchPictureOfTheDay()) {
+                is Result.Success -> Result.Success(resultList.data.first())
+                is Result.Error   -> resultList
+            }
         }
     }
 }

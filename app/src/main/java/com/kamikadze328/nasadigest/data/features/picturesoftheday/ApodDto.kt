@@ -11,7 +11,7 @@ data class ApodDto(
     val explanation: String?,
     @SerialName("title")
     val title: String?,
-    @SerialName("url")
+    @SerialName("hdurl")
     val url: String?,
     @SerialName("date")
     val date: String?,
@@ -21,6 +21,7 @@ data class ApodDto(
     companion object {
         const val MEDIA_TYPE_IMAGE = "image"
         const val MEDIA_TYPE_VIDEO = "video"
+        const val MEDIA_TYPE_IFRAME = "iframe"
         const val MEDIA_TYPE_OTHER = "other"
     }
 }

@@ -49,13 +49,9 @@ sealed interface Destination {
 
             @Serializable
             data class Info(
-                @SerialName(ASTEROID_ID_KEY)
+                @SerialName("asteroid_id")
                 val asteroidId: String
-            ) : Destination {
-                companion object {
-                    const val ASTEROID_ID_KEY = "213123"
-                }
-            }
+            ) : Destination
         }
     }
 }

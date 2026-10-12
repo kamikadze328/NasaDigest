@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import androidx.navigation.toRoute
 import com.kamikadze328.nasadigest.data.Result
 import com.kamikadze328.nasadigest.data.features.asteroids.AsteroidsRepository
 import com.kamikadze328.nasadigest.data.features.asteroids.model.NeoLookupAsteroidDto
@@ -29,10 +30,8 @@ class AsteroidInfoViewModel @Inject constructor(
         private const val TAG = "AsteroidInfoViewModel"
     }
 
-    private val asteroidId: String =
-        requireNotNull(savedStateHandle.get<String>(Destination.Asteroids.Destination.Info.ASTEROID_ID_KEY)) {
-            "Asteroid ID is required"
-        }
+    private val args = savedStateHandle.toRoute<Destination.Asteroids.Destination.Info>()
+    private val asteroidId = args.asteroidId
 
     private val _uiState: MutableStateFlow<AsteroidInfoUiState> =
         MutableStateFlow(AsteroidInfoUiState.Loading)

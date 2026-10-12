@@ -5,13 +5,18 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.hilt.navigation.compose.hiltViewModel
-import com.kamikadze328.nasadigest.ui.features.weather.model.*
+import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.kamikadze328.nasadigest.ui.features.weather.model.GeomagneticStormDaySummary
+import com.kamikadze328.nasadigest.ui.features.weather.model.GeomagneticStormsState
+import com.kamikadze328.nasadigest.ui.features.weather.model.SolarFlareDaySummary
+import com.kamikadze328.nasadigest.ui.features.weather.model.SolarFlareState
+import com.kamikadze328.nasadigest.ui.features.weather.model.WeatherUiEvent
+import com.kamikadze328.nasadigest.ui.features.weather.model.WeatherUiState
 import com.kamikadze328.nasadigest.ui.theme.NasaDigestTheme
 import kotlinx.collections.immutable.persistentListOf
 
@@ -19,7 +24,7 @@ import kotlinx.collections.immutable.persistentListOf
 internal fun WeatherScreenUi(
     viewModel: WeatherViewModel = hiltViewModel()
 ) {
-    val uiState by viewModel.uiState.collectAsState()
+    val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
     WeatherScreenUi(
         uiState = uiState,

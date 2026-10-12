@@ -15,10 +15,10 @@ class DonkiApiNetworkDataSource @Inject constructor(
         get() = secretsRepository.nasaApiKey
 
     suspend fun fetchGeomagneticStorm(): Result<List<DonkiGSTDto>> {
-        return client.get("https://api.nasa.gov/DONKI/GST?api_key=$nasaApiKey")
+        return client.get("https://ccmc.gsfc.nasa.gov/DONKI-API/get/GST?api_key=$nasaApiKey")
     }
 
     suspend fun fetchSolarFlare(): Result<List<DonkiFLRDto>> {
-        return client.get("https://api.nasa.gov/DONKI/FLR?api_key=$nasaApiKey")
+        return client.get("https://ccmc.gsfc.nasa.gov/DONKI-API/get/FLR?api_key=$nasaApiKey")
     }
 }

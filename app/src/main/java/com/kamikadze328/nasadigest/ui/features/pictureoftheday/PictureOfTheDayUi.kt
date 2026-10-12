@@ -6,9 +6,12 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Search
-import androidx.compose.material3.*
+import androidx.compose.material3.Button
+import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
@@ -16,10 +19,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.AnnotatedString
+import androidx.compose.ui.text.fromHtml
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import coil3.ImageLoader
 import coil3.compose.SubcomposeAsyncImage
 import coil3.video.VideoFrameDecoder
@@ -36,7 +42,7 @@ import org.joda.time.format.DateTimeFormat
 fun PictureOfTheDayScreenUi(
     viewModel: PictureOfTheDayViewModel = hiltViewModel()
 ) {
-    val uiState by viewModel.uiState.collectAsState()
+    val uiState by viewModel.uiState.collectAsStateWithLifecycle()
     PictureOfTheDayScreenUi(
         uiState = uiState,
         onEvent = remember { viewModel::onEvent },
@@ -58,7 +64,7 @@ private fun PictureOfTheDayScreenUi(
                 LoadingScreenUi(modifier = Modifier.fillMaxSize())
             }
 
-            is PictureOfTheDayUiState.Error -> {
+            is PictureOfTheDayUiState.Error   -> {
                 ErrorScreenUi(
                     modifier = Modifier.fillMaxSize(),
                     text = uiState.message,
@@ -103,12 +109,16 @@ private fun PictureOfTheDayDataUi(
             )
         }
         Box {
+            val context = LocalContext.current
+            val imageLoader = remember(context) {
+                ImageLoader.Builder(context)
+                    .components { add(VideoFrameDecoder.Factory()) }
+                    .build()
+            }
             SubcomposeAsyncImage(
                 modifier = Modifier.fillMaxWidth(),
                 model = uiState.url,
-                imageLoader = ImageLoader.Builder(LocalContext.current)
-                    .components { add(VideoFrameDecoder.Factory()) }
-                    .build(),
+                imageLoader = imageLoader,
                 loading = {
                     CircularProgressIndicator(
                         modifier = Modifier
@@ -155,7 +165,9 @@ private fun PictureOfTheDayDataUi(
                         .align(Alignment.BottomEnd)
                         .background(MaterialTheme.colorScheme.surface)
                         .padding(4.dp),
-                    text = uiState.copyright,
+                    text = AnnotatedString.fromHtml(
+                        htmlString = uiState.copyright,
+                    ),
                     style = MaterialTheme.typography.labelSmall,
                     color = MaterialTheme.colorScheme.onSurface,
                 )
@@ -165,7 +177,9 @@ private fun PictureOfTheDayDataUi(
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(horizontal = 16.dp),
-            text = uiState.explanation.orEmpty(),
+            text = AnnotatedString.fromHtml(
+                htmlString = uiState.explanation.orEmpty(),
+            ),
             style = MaterialTheme.typography.bodyLarge,
         )
     }
