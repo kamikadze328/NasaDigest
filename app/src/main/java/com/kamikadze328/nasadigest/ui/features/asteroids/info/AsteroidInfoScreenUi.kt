@@ -7,8 +7,6 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -28,6 +26,7 @@ import com.kamikadze328.nasadigest.ui.common.ErrorScreenUi
 import com.kamikadze328.nasadigest.ui.common.LoadingScreenUi
 import com.kamikadze328.nasadigest.ui.features.asteroids.info.model.AsteroidInfoUi
 import com.kamikadze328.nasadigest.ui.features.asteroids.info.model.AsteroidInfoUiState
+import com.kamikadze328.nasadigest.ui.icons.SearchFilled
 import com.kamikadze328.nasadigest.ui.theme.NasaDigestTheme
 import java.util.Date
 
@@ -150,7 +149,7 @@ private fun AsteroidInfoUi(asteroid: AsteroidInfoUi) {
                 ) {
                     Image(
                         modifier = Modifier.padding(end = 8.dp),
-                        imageVector = Icons.Default.Search,
+                        imageVector = SearchFilled,
                         contentDescription = asteroid.url,
                         colorFilter = ColorFilter.tint(MaterialTheme.colorScheme.onPrimary),
                     )

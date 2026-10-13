@@ -17,6 +17,7 @@ kotlinxCollectionsImmutable = "0.5.2"
 room = "2.8.5"
 datastore = "1.2.1"
 jodaTime = "2.15.0"
+telephoto = "0.19.0"
 
 [libraries]
 # AndoridX
@@ -32,7 +33,6 @@ androidx-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-toolin
 androidx-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
 androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
 androidx-navagation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "navigation" }
-androidx-material-icons-extended = { group = "androidx.compose.material", name = "material-icons-extended" }
 androidx-datastore = { group = "androidx.datastore", name = "datastore-preferences", version.ref = "datastore" }
 kotlinx-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlinxSerializationJson" }
 kotlinx-collections-immutable = { group = "org.jetbrains.kotlinx", name = "kotlinx-collections-immutable-jvm", version.ref = "kotlinxCollectionsImmutable" }
@@ -64,6 +64,7 @@ room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "room" }
 
 # 3-rd party
 android-joda-time = { group = "net.danlew", name = "android.joda", version.ref = "jodaTime" }
+telephoto-zoomable-peek-overlay = { module = "me.saket.telephoto:zoomable-peek-overlay", version.ref = "telephoto" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

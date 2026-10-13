@@ -16,7 +16,7 @@
     <string name="asteroid_id">ID: %s</string>
     <string name="asteroid_potentially_hazardous_full">The asteroid is potentially hazardous.</string>
     <string name="asteroid_first_observation_date">First observation date: %s</string>
-    <string name="asteroid_orbital_class_full">Orbital class is %s that means \"%s\".</string>
+    <string name="asteroid_orbital_class_full">Orbital class is %s that means \“%s\”.</string>
     <string name="solar_flares_title">Solar Flare Data</string>
     <string name="solar_flares_max_class">Class: %s</string>
     <string name="solar_flares_in_day_amount">Amount: %s</string>

@@ -6,8 +6,6 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Warning
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -30,6 +28,7 @@ import com.kamikadze328.nasadigest.ui.features.asteroids.info.model.AsteroidInfo
 import com.kamikadze328.nasadigest.ui.features.asteroids.list.model.AsteroidInListUi
 import com.kamikadze328.nasadigest.ui.features.asteroids.list.model.AsteroidListUi
 import com.kamikadze328.nasadigest.ui.features.asteroids.list.model.AsteroidsListUiState
+import com.kamikadze328.nasadigest.ui.icons.SkullFilled
 import com.kamikadze328.nasadigest.ui.theme.NasaDigestTheme
 import kotlinx.collections.immutable.persistentListOf
 import kotlinx.collections.immutable.persistentMapOf
@@ -196,7 +195,7 @@ private fun ItemAsteroidUi(asteroid: AsteroidInListUi, onClick: () -> Unit) {
                         color = textColor
                     )
                     Image(
-                        imageVector = Icons.Default.Warning,
+                        imageVector = SkullFilled,
                         contentDescription = null,
                         colorFilter = ColorFilter.tint(MaterialTheme.colorScheme.onPrimary),
                         modifier = Modifier

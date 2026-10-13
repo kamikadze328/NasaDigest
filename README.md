@@ -1,11 +1,11 @@
-# Nasa Digest
+# NASA Digest
 Mobile app project with [Nasa API](https://api.nasa.gov/)
 
 #### Technologies
 - Clean Architecture + MVVM
 - Jetpack Navigation
 - Coroutines + Flow
-- Matetial 3
+- Material 3
 - Room
 - Ktor
 - Hilt

@@ -4,8 +4,6 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.Button
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Icon
@@ -16,6 +14,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.res.stringResource
@@ -34,7 +33,10 @@ import com.kamikadze328.nasadigest.ui.common.ErrorScreenUi
 import com.kamikadze328.nasadigest.ui.common.LoadingScreenUi
 import com.kamikadze328.nasadigest.ui.common.prettyPrint
 import com.kamikadze328.nasadigest.ui.features.pictureoftheday.model.PictureOfTheDayUiState
+import com.kamikadze328.nasadigest.ui.icons.SearchFilled
 import com.kamikadze328.nasadigest.ui.theme.NasaDigestTheme
+import me.saket.telephoto.zoomable.rememberZoomablePeekOverlayState
+import me.saket.telephoto.zoomable.zoomablePeekOverlay
 import org.joda.time.LocalDate
 import org.joda.time.format.DateTimeFormat
 
@@ -115,10 +117,15 @@ private fun PictureOfTheDayDataUi(
                     .components { add(VideoFrameDecoder.Factory()) }
                     .build()
             }
+            val zoomState = rememberZoomablePeekOverlayState()
+
             SubcomposeAsyncImage(
-                modifier = Modifier.fillMaxWidth(),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .zoomablePeekOverlay(zoomState),
                 model = uiState.url,
                 imageLoader = imageLoader,
+                contentScale = ContentScale.FillWidth,
                 loading = {
                     CircularProgressIndicator(
                         modifier = Modifier
@@ -146,7 +153,7 @@ private fun PictureOfTheDayDataUi(
                         val text = stringResource(id = R.string.picture_of_the_day_open_in_browser)
                         Icon(
                             modifier = Modifier.width(24.dp),
-                            imageVector = Icons.Default.Search,
+                            imageVector = SearchFilled,
                             contentDescription = text,
                         )
                         Spacer(modifier = Modifier.width(8.dp))

@@ -3,8 +3,6 @@ package com.kamikadze328.nasadigest.ui.common
 import org.joda.time.DateTime
 import org.joda.time.LocalDate
 import org.joda.time.format.DateTimeFormat
-import java.text.SimpleDateFormat
-import java.util.Locale
 import javax.inject.Inject
 
 class DateParser @Inject constructor() {
@@ -12,9 +10,6 @@ class DateParser @Inject constructor() {
         private val FORMAT = DateTimeFormat.forPattern("yyyy-MM-dd")
         private val FORMAT_DATE_TIME = DateTimeFormat.forPattern("yyyy-MM-dd'T'HH:mm'Z'")
     }
-
-    private val format get() = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
-    private val formatDateTime get() = SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.getDefault())
 
     fun parse(date: String?): LocalDate? {
         return runCatching { LocalDate.parse(date, FORMAT) }.getOrNull()

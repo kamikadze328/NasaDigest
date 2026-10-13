@@ -7,8 +7,6 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -24,6 +22,7 @@ import com.kamikadze328.nasadigest.ui.common.ErrorScreenUi
 import com.kamikadze328.nasadigest.ui.common.LoadingScreenUi
 import com.kamikadze328.nasadigest.ui.features.weather.model.GeomagneticStormDaySummary
 import com.kamikadze328.nasadigest.ui.features.weather.model.GeomagneticStormsState
+import com.kamikadze328.nasadigest.ui.icons.RefreshFilled
 import com.kamikadze328.nasadigest.ui.theme.NasaDigestTheme
 import kotlinx.collections.immutable.persistentListOf
 
@@ -104,7 +103,7 @@ private fun GeomagneticStormTitleUi(onRefresh: () -> Unit) {
                 modifier = Modifier
                     .padding(12.dp)
                     .size(24.dp),
-                imageVector = Icons.Default.Refresh,
+                imageVector = RefreshFilled,
                 contentDescription = stringResource(R.string.refresh),
                 colorFilter = ColorFilter.tint(MaterialTheme.colorScheme.primary)
             )

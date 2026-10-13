@@ -1,4 +1,4 @@
-import com.android.build.gradle.internal.cxx.configure.gradleLocalProperties
+import java.util.Properties
 
 plugins {
     alias(libs.plugins.android.application)
@@ -9,6 +9,11 @@ plugins {
     alias(libs.plugins.room)
 }
 
+val localProperties = Properties().apply {
+    rootProject.file("local.properties")
+        .inputStream()
+        .use { load(it) }
+}
 
 android {
     namespace = "com.kamikadze328.nasadigest"
@@ -21,7 +26,7 @@ android {
         versionCode = 1
         versionName = "1.0"
 
-        val key = gradleLocalProperties(rootDir, providers).getProperty("nasa.api.key")
+        val key = localProperties.getProperty("nasa.api.key")
         buildConfigField("String", "NASA_API_KEY", "\"$key\"")
     }
 
@@ -42,9 +47,10 @@ android {
     buildFeatures {
         buildConfig = true
     }
-    room {
-        schemaDirectory("$projectDir/schemas")
-    }
+}
+
+room {
+    schemaDirectory("$projectDir/schemas")
 }
 
 dependencies {
@@ -69,7 +75,6 @@ dependencies {
     ksp(libs.google.dagger.hilt.compiler)
     implementation(libs.androidx.hilt.navigation.compose)
     implementation(libs.coil.compose)
-    implementation(libs.androidx.material.icons.extended)
     implementation(libs.coil.network.ktor)
     implementation(libs.coil.video)
     implementation(libs.kotlinx.collections.immutable)
@@ -78,6 +83,7 @@ dependencies {
     ksp(libs.room.compiler)
     implementation(libs.androidx.datastore)
     implementation(libs.android.joda.time)
+    implementation(libs.telephoto.zoomable.peek.overlay)
 
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)

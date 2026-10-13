@@ -1,10 +1,13 @@
 package com.kamikadze328.nasadigest.ui.common
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.*
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Build
-import androidx.compose.material.icons.filled.Refresh
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Button
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -17,6 +20,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.kamikadze328.nasadigest.R
+import com.kamikadze328.nasadigest.ui.icons.BuildFilled
+import com.kamikadze328.nasadigest.ui.icons.RefreshFilled
 import com.kamikadze328.nasadigest.ui.theme.NasaDigestTheme
 
 @Composable
@@ -36,7 +41,7 @@ fun ErrorScreenUi(
             verticalArrangement = Arrangement.spacedBy(6.dp),
         ) {
             Icon(
-                imageVector = Icons.Default.Build,
+                imageVector = BuildFilled,
                 contentDescription = null,
                 modifier = Modifier.size(48.dp),
                 tint = MaterialTheme.colorScheme.error,
@@ -52,7 +57,7 @@ fun ErrorScreenUi(
             ) {
                 Row {
                     Icon(
-                        imageVector = Icons.Default.Refresh,
+                        imageVector = RefreshFilled,
                         contentDescription = null,
                         modifier = Modifier.width(24.dp),
                     )

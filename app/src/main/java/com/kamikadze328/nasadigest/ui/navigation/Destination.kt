@@ -1,13 +1,12 @@
 package com.kamikadze328.nasadigest.ui.navigation
 
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.LocationOn
-import androidx.compose.material.icons.filled.ThumbUp
-import androidx.compose.material.icons.filled.Warning
-import androidx.compose.material.icons.outlined.LocationOn
-import androidx.compose.material.icons.outlined.ThumbUp
-import androidx.compose.material.icons.outlined.Warning
 import com.kamikadze328.nasadigest.R
+import com.kamikadze328.nasadigest.ui.icons.PlanetFilled
+import com.kamikadze328.nasadigest.ui.icons.PlanetOutlined
+import com.kamikadze328.nasadigest.ui.icons.SkullFilled
+import com.kamikadze328.nasadigest.ui.icons.SkullOutlined
+import com.kamikadze328.nasadigest.ui.icons.WbSunnyFilled
+import com.kamikadze328.nasadigest.ui.icons.WbSunnyOutlined
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -17,20 +16,20 @@ sealed interface Destination {
             TopLevelRoute(
                 nameResId = R.string.weather_title,
                 route = Weather,
-                icon = Icons.Outlined.LocationOn,
-                selectedIcon = Icons.Filled.LocationOn
+                icon = WbSunnyOutlined,
+                selectedIcon = WbSunnyFilled,
             ),
             TopLevelRoute(
                 nameResId = R.string.picture_of_the_day_title,
                 route = PictureOfTheDay,
-                icon = Icons.Outlined.ThumbUp,
-                selectedIcon = Icons.Filled.ThumbUp,
+                icon = PlanetOutlined,
+                selectedIcon = PlanetFilled,
             ),
             TopLevelRoute(
                 nameResId = R.string.asteroids_title,
                 route = Asteroids,
-                icon = Icons.Outlined.Warning,
-                selectedIcon = Icons.Filled.Warning,
+                icon = SkullOutlined,
+                selectedIcon = SkullFilled,
             ),
         )
     }
