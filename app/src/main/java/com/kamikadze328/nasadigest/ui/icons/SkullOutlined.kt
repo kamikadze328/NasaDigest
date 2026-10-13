@@ -118,7 +118,7 @@ private var _skull: ImageVector? = null
 
 @Preview
 @Composable
-private fun PreviewSkull() {
+private fun Preview() {
     Box {
         Icon(
             imageVector = SkullOutlined,

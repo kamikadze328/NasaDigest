@@ -76,7 +76,7 @@ private var _refresh: ImageVector? = null
 
 @Preview
 @Composable
-private fun PreviewSkull() {
+private fun Preview() {
     Box {
         Icon(
             imageVector = RefreshFilled,

@@ -74,7 +74,7 @@ private var _search: ImageVector? = null
 
 @Preview
 @Composable
-private fun PreviewSkull() {
+private fun Preview() {
     Box {
         Icon(
             imageVector = SearchFilled,
